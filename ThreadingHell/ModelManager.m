@@ -47,9 +47,6 @@ static dispatch_group_t _imfDispatchGroup;
     [details appendFormat:@" details"];
 
     NSLog(@"inside details: %@", details);
-  });
-
-  dispatch_group_notify(_imfDispatchGroup, _imfDispatchQueue, ^{
 
     if (completion) {
 
