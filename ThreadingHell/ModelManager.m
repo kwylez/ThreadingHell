@@ -113,8 +113,8 @@ static dispatch_group_t _imfDispatchGroup;
     if (completion) {
 
       if (accountDetails.count) {
-
-        completion(accountList, YES, nil);
+        NSLog(@">>>>>>>>>>>>> final instance of accountDetails: %@", accountDetails);
+        completion(accountDetails, YES, nil);
 
       } else {
 
