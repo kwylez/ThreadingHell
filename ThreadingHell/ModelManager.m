@@ -44,7 +44,7 @@ static dispatch_group_t _imfDispatchGroup;
      * This is a LONG NETWORK REQUEST
      */
 
-    [details appendFormat:@" details"];
+    [details appendFormat:@" accountNumber: %@ details", accountNumber];
 
     NSLog(@"inside details: %@", details);
 
@@ -75,7 +75,7 @@ static dispatch_group_t _imfDispatchGroup;
 
   __block NSMutableArray *accountDetails   = [NSMutableArray new];
 
-  NSArray *loginResponse = @[@"account1", @"account2", @"account3", @"account4", @"acount5"];
+  NSArray *loginResponse = @[@"account1", @"account2", @"account3", @"account4", @"account5"];
 
   if (loginResponse) {
 
