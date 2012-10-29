@@ -73,7 +73,6 @@ static dispatch_group_t _imfDispatchGroup;
 
 - (void)getAccountListMetaInformation:(IMFRequestCompletionBlock)completion {
 
-  __block NSMutableDictionary *accountList = [NSMutableDictionary new];
   __block NSMutableArray *accountDetails   = [NSMutableArray new];
 
   NSArray *loginResponse = @[@"account1", @"account2", @"account3", @"account4", @"acount5"];
@@ -113,7 +112,9 @@ static dispatch_group_t _imfDispatchGroup;
     if (completion) {
 
       if (accountDetails.count) {
+
         NSLog(@">>>>>>>>>>>>> final instance of accountDetails: %@", accountDetails);
+
         completion(accountDetails, YES, nil);
 
       } else {
