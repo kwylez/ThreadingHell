@@ -11,14 +11,17 @@
 
 static NSString* const wsRequestErrorDomain = @"net.epb.imf.im3.request.error";
 static char const *imfQueueName             = "net.epb.imf.im3.queue";
+static char const *imfNetworkQueueName      = "net.epb.imf.im3.network.queue";
 static dispatch_queue_t _imfDispatchQueue;
+static dispatch_queue_t _imfDispatchNeworkQueue;
 static dispatch_group_t _imfDispatchGroup;
 
 @implementation ModelManager
 
 + (void)initialize {
-  _imfDispatchQueue = dispatch_queue_create(imfQueueName, DISPATCH_QUEUE_CONCURRENT);
-  _imfDispatchGroup = dispatch_group_create();
+  _imfDispatchQueue       = dispatch_queue_create(imfQueueName, DISPATCH_QUEUE_CONCURRENT);
+  _imfDispatchNeworkQueue = dispatch_queue_create(imfNetworkQueueName, 0);
+  _imfDispatchGroup       = dispatch_group_create();
 }
 
 + (ModelManager *)sharedManager {
@@ -38,7 +41,7 @@ static dispatch_group_t _imfDispatchGroup;
 
   __block NSMutableString *details = [NSMutableString randomStringWithCapacity:10];
 
-  dispatch_group_async(_imfDispatchGroup, _imfDispatchQueue, ^{
+  dispatch_sync(_imfDispatchNeworkQueue, ^{
 
     /**
      * This is a LONG NETWORK REQUEST
